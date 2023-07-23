@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "emplist": [
+    {
+      "FirstName": "Sanchit",
+      "LastName": "Barjibhe",
+      "email": "sanchit@gmail.com",
+      "phone": "9823489273",
+      "gender": "male",
+      "status": true,
+      "hobbieecheck": [
+        "Singing",
+        "bodyBuilding",
+        "Photography"
+      ],
+      "eduction": "M.Tech",
+      "description": "React developer",
+      "password": "Sanchit@123",
+      "confirmPassword": "Sanchit@123",
+      "id": 1
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+// Some fake JWT I made using an online builder
+const exampleJWT = `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MDc0MDc3NTYsImV4cCI6MTYzODk0Mzc1NiwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.cfBNHOIaUSAVtLHbxlOmMZtp-giA7-v8yJpMyGooefE`;
+
+function getPayload(jwt){
+  // A JWT has 3 parts separated by '.'
+  // The middle part is a base64 encoded JSON
+  // decode the base64 
+  return atob(jwt.split(".")[1])
+}
+
+const payload = getPayload(exampleJWT);
+
+const expiration = new Date(payload.exp);
+const now = new Date();
+const fiveMinutes = 1000 * 60 * 5;
+
+if( expiration.getTime() - now.getTime() < fiveMinutes ){
+  console.log("JWT has expired or will expire soon");
+} else {
+  console.log("JWT is valid for more than 5 minutes", payload);
+}
+
+
+    //     // localStorage.getItem('access-token')
+    //     console.log('useEffect')
+    //     // eslint-disable-next-line
+    // }, [])
+
+    //    const GenerateJwtToken = async (employer: any) => {
+    //         const secretKey = new TextEncoder().encode(
+    //             'cc7e0d44fd473002f1c42167459001140ec6389b7353f8088f4d9a95f2f596f2',
+    //         )
+    //         const alg = 'HS256'
+    //         const jwtToken = await new jose.SignJWT({ 'urn:employer:claim': true })
+    //             .setProtectedHeader({ alg })
+    //             .setIssuedAt(employer)
+    //             .setIssuer('urn:employer:issuer')
+    //             .setAudience('urn:employer:audience')
+    //             .setExpirationTime('1m')
+    //             .sign(secretKey)
+    //         localStorage.setItem('access-token', JSON.stringify(jwtToken))
+    //         const decodedJwt: any = jwtDecode(jwtToken);
+    //     }
+
+    //     const JwtTokenExp = (decodedJwt: any) => {
+    //         let currentDate = new Date();
+    //         if (decodedJwt.exp * 2000 < currentDate.getTime()) {
+    //             localStorage.clear();
+    //             console.log("Token expired.");
+    //             navigate('/')
+    //         } else {
+    //             console.log("Valid token");
+    //         }
+    //         console.log(decodedJwt.exp);
+    //     }
